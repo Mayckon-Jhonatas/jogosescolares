@@ -4,16 +4,7 @@
     "subtitle": "Secretaria de educação, cultura e esporte de Vicência",
     "footer": "Desenvolvido por Mayckon Jhônatas"
   },
-  "schools": [
-    {
-      "id": "eee",
-      "name": "eeeee"
-    },
-    {
-      "id": "aaa",
-      "name": "aaaaa"
-    }
-  ],
+  "schools": [],
   "sports": [
     {
       "id": "volei",
@@ -64,21 +55,6 @@
       "icon": "♟️"
     }
   ],
-  "matches": [
-    {
-      "id": "m1775333531791",
-      "sportId": "volei",
-      "phase": "",
-      "date": "2026-04-04",
-      "time": "17:11",
-      "place": "1",
-      "home": "aaa",
-      "away": "eee",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "scheduled",
-      "durationMin": 40
-    }
-  ],
+  "matches": [],
   "athletics": []
 }
