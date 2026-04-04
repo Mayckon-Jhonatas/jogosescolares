@@ -1,0 +1,60 @@
+{
+  "general": {
+    "title": "XXIX Jogos Escolares — Resultados",
+    "subtitle": "Secretaria de educação, cultura e esporte de Vicência",
+    "footer": "Desenvolvido por Mayckon Jhônatas"
+  },
+  "schools": [],
+  "sports": [
+    {
+      "id": "volei",
+      "name": "Vôlei",
+      "category": "coletivo",
+      "icon": "🏐"
+    },
+    {
+      "id": "futsal",
+      "name": "Futsal",
+      "category": "coletivo",
+      "icon": "⚽"
+    },
+    {
+      "id": "handebol",
+      "name": "Handebol",
+      "category": "coletivo",
+      "icon": "🤾"
+    },
+    {
+      "id": "futebol",
+      "name": "Futebol",
+      "category": "coletivo",
+      "icon": "🥅"
+    },
+    {
+      "id": "basquete",
+      "name": "Basquete",
+      "category": "coletivo",
+      "icon": "🏀"
+    },
+    {
+      "id": "volei_praia",
+      "name": "Vôlei de Praia",
+      "category": "coletivo",
+      "icon": "🏖️"
+    },
+    {
+      "id": "atletismo",
+      "name": "Atletismo",
+      "category": "individual",
+      "icon": "🏃"
+    },
+    {
+      "id": "xadrez",
+      "name": "Xadrez",
+      "category": "individual",
+      "icon": "♟️"
+    }
+  ],
+  "matches": [],
+  "athletics": []
+}
