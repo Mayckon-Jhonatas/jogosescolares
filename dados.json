@@ -4,7 +4,12 @@
     "subtitle": "Secretaria de educação, cultura e esporte de Vicência",
     "footer": "Desenvolvido por Mayckon Jhônatas"
   },
-  "schools": [],
+  "schools": [
+    {
+      "id": "jr",
+      "name": "test"
+    }
+  ],
   "sports": [
     {
       "id": "volei",
