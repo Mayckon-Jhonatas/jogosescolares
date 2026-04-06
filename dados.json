@@ -74,10 +74,10 @@
       "place": "",
       "home": "2",
       "away": "1",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "status": "scheduled",
-      "durationMin": 40
+      "durationMin": 5
     }
   ],
   "athletics": []
