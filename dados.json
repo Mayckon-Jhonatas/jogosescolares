@@ -4,16 +4,7 @@
     "subtitle": "Secretaria de educação, cultura e esporte de Vicência",
     "footer": "Desenvolvido por Mayckon Jhônatas"
   },
-  "schools": [
-    {
-      "id": "1",
-      "name": "test"
-    },
-    {
-      "id": "2",
-      "name": "test2"
-    }
-  ],
+  "schools": [],
   "sports": [
     {
       "id": "volei",
@@ -64,21 +55,6 @@
       "icon": "♟️"
     }
   ],
-  "matches": [
-    {
-      "id": "m1775479079268",
-      "sportId": "volei",
-      "phase": "test",
-      "date": "2026-04-06",
-      "time": "09:37",
-      "place": "Borracha",
-      "home": "2",
-      "away": "1",
-      "homeScore": 1,
-      "awayScore": 0,
-      "status": "finished",
-      "durationMin": 5
-    }
-  ],
+  "matches": [],
   "athletics": []
 }
