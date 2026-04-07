@@ -424,6 +424,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 24
+    },
+    {
+      "id": "m1775569212450",
+      "sportId": "futsal",
+      "gameNumber": "18",
+      "category": "Pedagógico Masculino",
+      "group": "B",
+      "date": "2026-04-11",
+      "time": "10:15",
+      "place": "Quadra Poliesportiva do Distrito de Borracha",
+      "home": "st",
+      "away": "lc",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 24
+    },
+    {
+      "id": "m1775569315623",
+      "sportId": "futsal",
+      "gameNumber": "19",
+      "category": "Chupetinha Masculino",
+      "group": "B",
+      "date": "2026-04-11",
+      "time": "10:45",
+      "place": "Quadra Poliesportiva do Distrito de Borracha",
+      "home": "mlmp",
+      "away": "lc",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
     }
   ],
   "athletics": []
