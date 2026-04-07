@@ -253,7 +253,7 @@
       overflow:hidden;
       border:1px solid var(--border);
       border-radius:16px;
-      min-width:820px;
+      min-width:900px;
     }
 
     .table thead th{
@@ -352,6 +352,13 @@
       white-space:nowrap;
     }
 
+    .pill-stack{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      align-items:center;
+    }
+
     .empty{
       padding:14px;
       border:1px dashed rgba(15,23,42,.18);
@@ -422,7 +429,7 @@
       }
 
       .table{
-        min-width:680px;
+        min-width:820px;
       }
 
       .table thead th{
@@ -479,7 +486,7 @@
       }
 
       .table{
-        min-width:620px;
+        min-width:760px;
       }
 
       .table thead th{
@@ -539,7 +546,7 @@
         <div class="card-h">
           <div>
             <h2>📋 Tabela de Jogos</h2>
-            <div class="muted">Filtre por <b>categoria</b>, modalidade, fase ou escola.</div>
+            <div class="muted">Filtre por <b>categoria</b>, modalidade, chave ou escola.</div>
           </div>
           <div class="muted" id="mutedHint"> ⚠️ Os dados podem levar até 30 segundos para serem atualizados conforme o andamento dos jogos. </div>
         </div>
@@ -549,7 +556,7 @@
 
           <div class="filters" style="margin-bottom:12px">
             <div class="field">
-              <label>Categoria</label>
+              <label>Tipo</label>
               <select id="fCat"></select>
             </div>
             <div class="field">
@@ -557,7 +564,7 @@
               <select id="fSport"></select>
             </div>
             <div class="field">
-              <label>Fase / Subcategoria</label>
+              <label>Categoria</label>
               <select id="fPhase"></select>
             </div>
             <div class="field">
@@ -566,7 +573,7 @@
             </div>
             <div class="field">
               <label>Buscar</label>
-              <input id="fSearch" type="text" placeholder="Ex: José Rufino, final, quadra..." />
+              <input id="fSearch" type="text" placeholder="Ex: José Rufino, juvenil, chave A..." />
             </div>
           </div>
 
@@ -583,6 +590,25 @@
   <script>
     const STORAGE_KEY = "jogos_escolares_visual_v1";
     const DATA_URL = "./dados.json";
+
+    const CATEGORIAS_FIXAS = [
+      "-",
+      "Chupetinha Masculino",
+      "Chupetinha Feminino",
+      "Mamadeira Masculino",
+      "Mamadeira Feminino",
+      "Mirim Masculino",
+      "Mirim Feminino",
+      "Fraldinha Masculino",
+      "Fraldinha Feminino",
+      "Pedagógico Masculino",
+      "Pedagógico Feminino",
+      "Infantil Masculino",
+      "Infantil Feminino",
+      "Juvenil Masculino",
+      "Juvenil Feminino",
+      "Adulto"
+    ];
 
     const defaultData = {
       general:{
@@ -660,15 +686,25 @@
       return (sportObj(id) || {name:"—"}).name;
     }
 
+    function getCategoria(item){
+      return item.category || item.phase || "-";
+    }
+
+    function getChave(item){
+      return item.group || item.key || item.chave || "-";
+    }
+
     function matchText(m){
       const s = sportName(m.sportId);
       const a = schoolName(m.home);
       const b = schoolName(m.away);
-      return `${s} ${m.phase} ${a} ${b} ${m.place} ${m.status} ${m.homeScore ?? ""} ${m.awayScore ?? ""} ${m.date} ${m.time}`.toLowerCase();
+      const categoria = getCategoria(m);
+      const chave = getChave(m);
+      return `${s} ${categoria} ${chave} ${a} ${b} ${m.place || ""} ${m.status || ""} ${m.homeScore ?? ""} ${m.awayScore ?? ""} ${m.date || ""} ${m.time || ""}`.toLowerCase();
     }
 
     function athleticText(a){
-      return `${sportName(a.sportId)} ${a.phase} ${schoolName(a.school)} ${a.position}`.toLowerCase();
+      return `${sportName(a.sportId)} ${getCategoria(a)} ${getChave(a)} ${schoolName(a.school)} ${a.position || ""}`.toLowerCase();
     }
 
     const LIVE_DEFAULT_DURATION_MIN = 60;
@@ -702,14 +738,6 @@
       search: ""
     };
 
-    function uniquePhases(){
-      const set = new Set([
-        ...MATCHES.map(m=>m.phase).filter(Boolean),
-        ...ATHLETICS.map(a=>a.phase).filter(Boolean)
-      ]);
-      return Array.from(set).sort((a,b)=>a.localeCompare(b));
-    }
-
     function fillSelect(el, options, allLabel="Todos"){
       el.innerHTML = "";
       const optAll = document.createElement("option");
@@ -722,6 +750,23 @@
         opt.value = o.value;
         opt.textContent = o.label;
         el.appendChild(opt);
+      });
+    }
+
+    function fillCategorySelect(){
+      const select = $("fPhase");
+      select.innerHTML = "";
+
+      const optAll = document.createElement("option");
+      optAll.value = "ALL";
+      optAll.textContent = "Todas";
+      select.appendChild(optAll);
+
+      CATEGORIAS_FIXAS.forEach(cat=>{
+        const opt = document.createElement("option");
+        opt.value = cat;
+        opt.textContent = cat;
+        select.appendChild(opt);
       });
     }
 
@@ -796,7 +841,7 @@
       ], "Todas");
 
       rebuildSportSelect(false);
-      fillSelect($("fPhase"), uniquePhases().map(p=>({value:p, label:p})), "Todas");
+      fillCategorySelect();
       fillSelect($("fSchool"), SCHOOLS.map(s=>({value:s.id, label:s.name})), "Todas");
 
       $("fCat").onchange = () => {
@@ -805,24 +850,38 @@
         highlightChip(state.sportId);
         renderAll();
       };
+
       $("fSport").onchange = () => {
         state.sportId = $("fSport").value;
         highlightChip(state.sportId);
         renderAll();
       };
-      $("fPhase").onchange = () => { state.phase = $("fPhase").value; renderAll(); };
-      $("fSchool").onchange = () => { state.school = $("fSchool").value; renderAll(); };
-      $("fSearch").oninput = () => { state.search = $("fSearch").value.trim().toLowerCase(); renderAll(); };
+
+      $("fPhase").onchange = () => {
+        state.phase = $("fPhase").value;
+        renderAll();
+      };
+
+      $("fSchool").onchange = () => {
+        state.school = $("fSchool").value;
+        renderAll();
+      };
+
+      $("fSearch").oninput = () => {
+        state.search = $("fSearch").value.trim().toLowerCase();
+        renderAll();
+      };
     }
 
     function filteredMatches(){
       return MATCHES.filter(m=>{
         const s = sportObj(m.sportId);
+        const categoria = getCategoria(m);
 
         if (state.cat !== "ALL" && (!s || s.category !== state.cat)) return false;
         if (state.sportId !== "ALL" && m.sportId !== state.sportId) return false;
-        if (state.phase !== "ALL" && m.phase !== state.phase) return false;
-        if (state.school !== "ALL" && !(m.home===state.school || m.away===state.school)) return false;
+        if (state.phase !== "ALL" && categoria !== state.phase) return false;
+        if (state.school !== "ALL" && !(m.home === state.school || m.away === state.school)) return false;
         if (state.search && !matchText(m).includes(state.search)) return false;
 
         return true;
@@ -836,15 +895,20 @@
     function filteredAthletics(){
       return ATHLETICS.filter(a=>{
         const s = sportObj(a.sportId);
+        const categoria = getCategoria(a);
+
         if (state.cat !== "ALL" && (!s || s.category !== state.cat)) return false;
         if (state.sportId !== "ALL" && a.sportId !== state.sportId) return false;
-        if (state.phase !== "ALL" && a.phase !== state.phase) return false;
+        if (state.phase !== "ALL" && categoria !== state.phase) return false;
         if (state.school !== "ALL" && a.school !== state.school) return false;
         if (state.search && !athleticText(a).includes(state.search)) return false;
+
         return true;
       }).sort((a,b)=>{
-        if(a.phase !== b.phase) return a.phase.localeCompare(b.phase);
-        return a.position - b.position;
+        const catA = getCategoria(a);
+        const catB = getCategoria(b);
+        if(catA !== catB) return catA.localeCompare(catB);
+        return (a.position || 999) - (b.position || 999);
       });
     }
 
@@ -869,12 +933,17 @@
 
         const sp = sportObj(m.sportId);
         const icon = sp?.icon || "🏅";
+        const categoria = getCategoria(m);
+        const chave = getChave(m);
 
         return `
           <tr>
-            <td class="nowrap">
-              <span class="pill">${icon} ${sportName(m.sportId)}</span>
-              <span class="pill">${m.phase}</span>
+            <td>
+              <div class="pill-stack">
+                <span class="pill">${icon} ${sportName(m.sportId)}</span>
+                <span class="pill">Categoria: ${categoria}</span>
+                <span class="pill">Chave: ${chave}</span>
+              </div>
             </td>
             <td>
               <span class="school">${schoolName(m.home)}</span>
@@ -901,7 +970,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Modalidade / Fase</th>
+                <th>Modalidade / Categoria / Chave</th>
                 <th>Mandante</th>
                 <th class="center">Placar</th>
                 <th>Visitante</th>
@@ -916,26 +985,39 @@
 
     function renderAthleticsTable(list){
       if (!list.length){
-        return `<div class="empty">Nenhum resultado de atletismo encontrado com esses filtros.</div>`;
+        return `<div class="empty">Nenhum resultado encontrado com esses filtros.</div>`;
       }
 
       const groups = {};
       list.forEach(a=>{
-        if(!groups[a.phase]) groups[a.phase] = [];
-        groups[a.phase].push(a);
+        const categoria = getCategoria(a);
+        if(!groups[categoria]) groups[categoria] = [];
+        groups[categoria].push(a);
       });
 
-      return Object.entries(groups).map(([phase, items])=>{
+      return Object.entries(groups).map(([categoria, items])=>{
         const rows = items.map(a=>`
           <tr>
-            <td class="nowrap">
-              <span class="pill">🏃 Atletismo</span>
-              <span class="pill">${phase}</span>
+            <td>
+              <div class="pill-stack">
+                <span class="pill">${sportObj(a.sportId)?.icon || "🏅"} ${sportName(a.sportId)}</span>
+                <span class="pill">Categoria: ${categoria}</span>
+                <span class="pill">Chave: ${getChave(a)}</span>
+              </div>
             </td>
-            <td><span class="school">${schoolName(a.school)}</span><span class="sub">Escola</span></td>
-            <td class="center"><span class="score">${a.position}º</span><br/><span class="sub"><span class="pill">🏅 Posição</span></span></td>
+            <td>
+              <span class="school">${schoolName(a.school)}</span>
+              <span class="sub">Escola</span>
+            </td>
+            <td class="center">
+              <span class="score">${a.position || "—"}º</span><br/>
+              <span class="sub"><span class="pill">🏅 Posição</span></span>
+            </td>
             <td class="center">—</td>
-            <td class="nowrap"><span class="school">Subcategoria</span><span class="sub">${phase}</span></td>
+            <td class="nowrap">
+              <span class="school">Resultado</span>
+              <span class="sub">${a.note || a.obs || "—"}</span>
+            </td>
           </tr>
         `).join("");
 
@@ -945,7 +1027,7 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>Modalidade / Subcategoria</th>
+                  <th>Modalidade / Categoria / Chave</th>
                   <th>Escola</th>
                   <th class="center">Posição</th>
                   <th>Observação</th>
@@ -980,6 +1062,7 @@
 
       const liveCount = matches.filter(m => isLiveMatch(m)).length;
       const totalCount = matches.length + athletics.length;
+
       $("badgeCount").innerHTML = `
         ${totalCount} registros
         ${liveCount ? ` • <span class="pill pill--live2"><span class="dot-live"></span>${liveCount} ao vivo</span>` : ""}
