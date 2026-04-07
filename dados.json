@@ -167,7 +167,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "scheduled",
-      "durationMin": 19
+      "durationMin": 20
     },
     {
       "id": "m1775564625272",
@@ -324,6 +324,38 @@
       "place": "Ginásio de Esporte Amaury Pedrosa",
       "home": "jp",
       "away": "ag",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
+    },
+    {
+      "id": "m1775566945046",
+      "sportId": "futsal",
+      "gameNumber": "12",
+      "category": "Mamadeira Feminino",
+      "group": "U",
+      "date": "2026-04-11",
+      "time": "08:00",
+      "place": "Quadra Poliesportiva do Distrito de Borracha",
+      "home": "as",
+      "away": "cpg",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
+    },
+    {
+      "id": "m1775567025947",
+      "sportId": "futsal",
+      "gameNumber": "13",
+      "category": "Mamadeira Masculino",
+      "group": "B",
+      "date": "",
+      "time": "08:20",
+      "place": "",
+      "home": "cpg",
+      "away": "as",
       "homeScore": 0,
       "awayScore": 0,
       "status": "scheduled",
