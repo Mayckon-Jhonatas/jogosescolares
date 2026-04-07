@@ -56,6 +56,50 @@
     {
       "id": "ml",
       "name": "Mãos de Luz"
+    },
+    {
+      "id": "is",
+      "name": "ISCJ"
+    },
+    {
+      "id": "jr",
+      "name": "José Rufino"
+    },
+    {
+      "id": "ba",
+      "name": "Benjamim Azevedo"
+    },
+    {
+      "id": "jm",
+      "name": "Mª José Monteiro"
+    },
+    {
+      "id": "st",
+      "name": "São Tarcísio"
+    },
+    {
+      "id": "mlmp",
+      "name": "Maria de Lourdes"
+    },
+    {
+      "id": "ai",
+      "name": "Arco Iris"
+    },
+    {
+      "id": "je",
+      "name": "Jacy Estelita"
+    },
+    {
+      "id": "cl",
+      "name": "Clotilde"
+    },
+    {
+      "id": "mb",
+      "name": "Monte Belo"
+    },
+    {
+      "id": "as",
+      "name": "Afranio Samuel"
     }
   ],
   "sports": [
