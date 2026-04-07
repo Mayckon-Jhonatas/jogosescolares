@@ -744,6 +744,22 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 40
+    },
+    {
+      "id": "m1775573818417",
+      "sportId": "futsal",
+      "gameNumber": "38",
+      "category": "Mamadeira Masculino",
+      "group": "A",
+      "date": "2026-04-12",
+      "time": "08:00",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "ml",
+      "away": "is",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
     }
   ],
   "athletics": []
