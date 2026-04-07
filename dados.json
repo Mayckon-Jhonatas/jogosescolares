@@ -216,6 +216,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 39
+    },
+    {
+      "id": "m1775565571580",
+      "sportId": "futsal",
+      "gameNumber": "05",
+      "category": "Fraldinha Feminino",
+      "group": "U",
+      "date": "2026-04-11",
+      "time": "09:40",
+      "place": "",
+      "home": "is",
+      "away": "jp",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
+    },
+    {
+      "id": "m1775565731314",
+      "sportId": "handebol",
+      "gameNumber": "06",
+      "category": "Fraldinha Masculino",
+      "group": "U",
+      "date": "2026-04-11",
+      "time": "10:05",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "eural",
+      "away": "cm",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 40
     }
   ],
   "athletics": []
