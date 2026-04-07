@@ -6,12 +6,56 @@
   },
   "schools": [
     {
-      "id": "1",
-      "name": "1"
+      "id": "lm",
+      "name": "Luiz Maranhão"
     },
     {
-      "id": "2",
-      "name": "2"
+      "id": "cm",
+      "name": "Comunidade Cristã"
+    },
+    {
+      "id": "ceru",
+      "name": "EREM DR. Joaquim Correia"
+    },
+    {
+      "id": "epg",
+      "name": "EREM Padre Guedes"
+    },
+    {
+      "id": "nx",
+      "name": "Napoleão Xavier"
+    },
+    {
+      "id": "ag",
+      "name": "Alfredo Gomes"
+    },
+    {
+      "id": "eural",
+      "name": "Urbano Ramos"
+    },
+    {
+      "id": "cpg",
+      "name": "Carlos Pessoa"
+    },
+    {
+      "id": "vl",
+      "name": "Vovó Lurdinha"
+    },
+    {
+      "id": "at",
+      "name": "Almir Tavares"
+    },
+    {
+      "id": "jp",
+      "name": "Juvenato"
+    },
+    {
+      "id": "lc",
+      "name": "Luiza Coutinho"
+    },
+    {
+      "id": "ml",
+      "name": "Mãos de Luz"
     }
   ],
   "sports": [
@@ -64,22 +108,6 @@
       "icon": "♟️"
     }
   ],
-  "matches": [
-    {
-      "id": "m1775559942269",
-      "sportId": "volei",
-      "category": "Chupetinha Masculino",
-      "group": "A",
-      "date": "2026-04-07",
-      "time": "08:06",
-      "place": "BORRACHA",
-      "home": "1",
-      "away": "2",
-      "homeScore": 0,
-      "awayScore": 0,
-      "status": "scheduled",
-      "durationMin": 40
-    }
-  ],
+  "matches": [],
   "athletics": []
 }
