@@ -167,7 +167,7 @@
       "homeScore": 0,
       "awayScore": 0,
       "status": "scheduled",
-      "durationMin": 20
+      "durationMin": 16
     },
     {
       "id": "m1775564625272",
@@ -360,6 +360,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 20
+    },
+    {
+      "id": "m1775567249361",
+      "sportId": "handebol",
+      "gameNumber": "14",
+      "category": "Mamadeira Feminino",
+      "group": "U",
+      "date": "2026-04-11",
+      "time": "08:40",
+      "place": "Quadra Poliesportiva do Distrito de Borracha",
+      "home": "at",
+      "away": "cpg",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
+    },
+    {
+      "id": "m1775567472967",
+      "sportId": "handebol",
+      "gameNumber": "15",
+      "category": "Mamadeira Masculino",
+      "group": "U",
+      "date": "2026-04-11",
+      "time": "09:00",
+      "place": "Quadra Poliesportiva do Distrito de Borracha",
+      "home": "at",
+      "away": "cpg",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
     }
   ],
   "athletics": []
