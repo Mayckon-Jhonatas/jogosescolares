@@ -253,7 +253,7 @@
       overflow:hidden;
       border:1px solid var(--border);
       border-radius:16px;
-      min-width:900px;
+      min-width:980px;
     }
 
     .table thead th{
@@ -332,16 +332,30 @@
       white-space:nowrap;
     }
 
+    .score-cell{
+      text-align:center;
+      width:120px;
+      padding-left:0 !important;
+      padding-right:18px !important;
+    }
+
+    .team-cell{
+      text-align:center;
+      width:220px;
+    }
+
     .school{
       font-weight:700;
       display:block;
       margin-bottom:2px;
+      text-align:center;
     }
 
     .sub{
       display:block;
       font-size:12px;
       color:var(--muted);
+      text-align:center;
     }
 
     .center{
@@ -429,7 +443,7 @@
       }
 
       .table{
-        min-width:820px;
+        min-width:900px;
       }
 
       .table thead th{
@@ -454,6 +468,15 @@
       .badge{
         font-size:11px;
         padding:7px 10px;
+      }
+
+      .score-cell{
+        width:110px;
+        padding-right:14px !important;
+      }
+
+      .team-cell{
+        width:200px;
       }
     }
 
@@ -486,7 +509,7 @@
       }
 
       .table{
-        min-width:760px;
+        min-width:860px;
       }
 
       .table thead th{
@@ -519,6 +542,15 @@
       footer{
         font-size:11px;
         padding:12px 12px 22px;
+      }
+
+      .score-cell{
+        width:100px;
+        padding-right:12px !important;
+      }
+
+      .team-cell{
+        width:180px;
       }
     }
   </style>
@@ -687,20 +719,26 @@
     }
 
     function getCategoria(item){
-      return item.category || item.phase || "-";
+      return item?.category || item?.phase || "-";
     }
 
     function getChave(item){
-      return item.group || item.key || item.chave || "-";
+      return item?.group || item?.key || item?.chave || "-";
+    }
+
+    function getGameNumber(item){
+      const valor = item?.gameNumber ?? item?.matchNumber ?? item?.numeroJogo ?? "-";
+      return valor || "-";
     }
 
     function matchText(m){
       const s = sportName(m.sportId);
       const a = schoolName(m.home);
       const b = schoolName(m.away);
+      const numero = getGameNumber(m);
       const categoria = getCategoria(m);
       const chave = getChave(m);
-      return `${s} ${categoria} ${chave} ${a} ${b} ${m.place || ""} ${m.status || ""} ${m.homeScore ?? ""} ${m.awayScore ?? ""} ${m.date || ""} ${m.time || ""}`.toLowerCase();
+      return `${s} ${numero} ${categoria} ${chave} ${a} ${b} ${m.place || ""} ${m.status || ""} ${m.homeScore ?? ""} ${m.awayScore ?? ""} ${m.date || ""} ${m.time || ""}`.toLowerCase();
     }
 
     function athleticText(a){
@@ -933,6 +971,7 @@
 
         const sp = sportObj(m.sportId);
         const icon = sp?.icon || "🏅";
+        const numero = getGameNumber(m);
         const categoria = getCategoria(m);
         const chave = getChave(m);
 
@@ -941,23 +980,24 @@
             <td>
               <div class="pill-stack">
                 <span class="pill">${icon} ${sportName(m.sportId)}</span>
+                <span class="pill">Nº ${numero}</span>
                 <span class="pill">Categoria: ${categoria}</span>
                 <span class="pill">Chave: ${chave}</span>
               </div>
             </td>
-            <td>
+            <td class="team-cell">
               <span class="school">${schoolName(m.home)}</span>
               <span class="sub">Mandante</span>
             </td>
-            <td class="center">
+            <td class="score-cell">
               <span class="score">${score}</span><br/>
               <span class="sub">${statusPill}</span>
             </td>
-            <td>
+            <td class="team-cell">
               <span class="school">${schoolName(m.away)}</span>
               <span class="sub">Visitante</span>
             </td>
-            <td class="nowrap">
+            <td class="nowrap center">
               <span class="school">${fmtDate(m.date)} • ${m.time || "—"}</span>
               <span class="sub">${m.place || "—"}</span>
             </td>
@@ -970,7 +1010,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Modalidade / Categoria / Chave</th>
+                <th>Modalidade / Nº / Categoria / Chave</th>
                 <th>Mandante</th>
                 <th class="center">Placar</th>
                 <th>Visitante</th>
@@ -1005,16 +1045,16 @@
                 <span class="pill">Chave: ${getChave(a)}</span>
               </div>
             </td>
-            <td>
+            <td class="team-cell">
               <span class="school">${schoolName(a.school)}</span>
               <span class="sub">Escola</span>
             </td>
-            <td class="center">
+            <td class="score-cell">
               <span class="score">${a.position || "—"}º</span><br/>
               <span class="sub"><span class="pill">🏅 Posição</span></span>
             </td>
             <td class="center">—</td>
-            <td class="nowrap">
+            <td class="nowrap center">
               <span class="school">Resultado</span>
               <span class="sub">${a.note || a.obs || "—"}</span>
             </td>
