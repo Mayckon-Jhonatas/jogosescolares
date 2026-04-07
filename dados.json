@@ -392,6 +392,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 16
+    },
+    {
+      "id": "m1775568925175",
+      "sportId": "futsal",
+      "gameNumber": "16",
+      "category": "Fraldinha Masculino",
+      "group": "B",
+      "date": "2026-04-11",
+      "time": "09:20",
+      "place": "Quadra Poliesportiva do Distrito de Borracha",
+      "home": "st",
+      "away": "jr",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
+    },
+    {
+      "id": "m1775569016277",
+      "sportId": "futsal",
+      "gameNumber": "17",
+      "category": "Pedagógico Feminino",
+      "group": "A",
+      "date": "2026-04-11",
+      "time": "09:45",
+      "place": "Quadra Poliesportiva do Distrito de Borracha",
+      "home": "lm",
+      "away": "lc",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 24
     }
   ],
   "athletics": []
