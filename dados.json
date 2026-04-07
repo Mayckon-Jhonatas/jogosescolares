@@ -568,6 +568,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 20
+    },
+    {
+      "id": "m1775570734294",
+      "sportId": "futsal",
+      "gameNumber": "27",
+      "category": "Mirim Masculino",
+      "group": "C",
+      "date": "2026-04-11",
+      "time": "16:10",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "ag",
+      "away": "cm",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 40
+    },
+    {
+      "id": "m1775570880706",
+      "sportId": "futsal",
+      "gameNumber": "28",
+      "category": "Fraldinha Masculino",
+      "group": "A",
+      "date": "2026-04-11",
+      "time": "16:50",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "ml",
+      "away": "eural",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
     }
   ],
   "athletics": []
