@@ -760,6 +760,22 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 16
+    },
+    {
+      "id": "m1775645387329",
+      "sportId": "futsal",
+      "gameNumber": "39",
+      "category": "Pedagógico Masculino",
+      "group": "A",
+      "date": "2026-04-12",
+      "time": "08:25",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "lm",
+      "away": "is",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 24
     }
   ],
   "athletics": []
