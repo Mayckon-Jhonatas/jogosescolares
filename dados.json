@@ -1160,6 +1160,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 20
+    },
+    {
+      "id": "m1775657234311",
+      "sportId": "futsal",
+      "gameNumber": "64",
+      "category": "Pedagógico Masculino",
+      "group": "B",
+      "date": "2026-04-13",
+      "time": "10:45",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "jm",
+      "away": "st",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 24
+    },
+    {
+      "id": "m1775657676164",
+      "sportId": "futsal",
+      "gameNumber": "65",
+      "category": "Mirim Masculino",
+      "group": "B",
+      "date": "2026-04-13",
+      "time": "11:15",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "is",
+      "away": "jm",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 40
     }
   ],
   "athletics": []
