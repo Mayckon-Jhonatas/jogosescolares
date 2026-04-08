@@ -1048,6 +1048,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 20
+    },
+    {
+      "id": "m1775653774134",
+      "sportId": "futsal",
+      "gameNumber": "57",
+      "category": "Mamadeira Masculino",
+      "group": "A",
+      "date": "2026-04-13",
+      "time": "08:00",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "ai",
+      "away": "ml",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
+    },
+    {
+      "id": "m1775654023139",
+      "sportId": "futsal",
+      "gameNumber": "58",
+      "category": "Mamadeira Feminino",
+      "group": "U",
+      "date": "2026-04-13",
+      "time": "08:20",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "as",
+      "away": "mb",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
     }
   ],
   "athletics": []
