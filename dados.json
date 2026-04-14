@@ -1288,6 +1288,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 16
+    },
+    {
+      "id": "m1776176095580",
+      "sportId": "handebol",
+      "gameNumber": "72",
+      "category": "Mamadeira Masculino",
+      "group": "U",
+      "date": "2026-04-20",
+      "time": "09:20",
+      "place": "Quadra Poliesportiva do Distrito de Murupé",
+      "home": "cpg",
+      "away": "vl",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
+    },
+    {
+      "id": "m1776176189047",
+      "sportId": "futsal",
+      "gameNumber": "73",
+      "category": "Chupetinha Feminino",
+      "group": "B",
+      "date": "2026-04-20",
+      "time": "09:40",
+      "place": "Quadra Poliesportiva do Distrito de Murupé",
+      "home": "mlmp",
+      "away": "lc",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
     }
   ],
   "athletics": []
