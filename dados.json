@@ -1320,6 +1320,22 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 16
+    },
+    {
+      "id": "m1776176313452",
+      "sportId": "futsal",
+      "gameNumber": "74",
+      "category": "Pedagógico Masculino",
+      "group": "A",
+      "date": "2026-04-20",
+      "time": "10:00",
+      "place": "Quadra Poliesportiva do Distrito de Murupé",
+      "home": "cm",
+      "away": "ba",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 24
     }
   ],
   "athletics": []
