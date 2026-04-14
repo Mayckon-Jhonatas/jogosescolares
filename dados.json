@@ -1240,6 +1240,22 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 40
+    },
+    {
+      "id": "m1776174935106",
+      "sportId": "futsal",
+      "gameNumber": "69",
+      "category": "Chupetinha Masculino",
+      "group": "D",
+      "date": "",
+      "time": "08:00",
+      "place": "Quadra Poliesportiva do Distrito de Murupé",
+      "home": "mlmp",
+      "away": "ba",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
     }
   ],
   "athletics": []
