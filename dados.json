@@ -1272,6 +1272,22 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 16
+    },
+    {
+      "id": "m1776175937768",
+      "sportId": "handebol",
+      "gameNumber": "71",
+      "category": "Mamadeira Feminino",
+      "group": "U",
+      "date": "2026-04-20",
+      "time": "08:55",
+      "place": "Quadra Poliesportiva do Distrito de Murupé",
+      "home": "cpg",
+      "away": "vl",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
     }
   ],
   "athletics": []
