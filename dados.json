@@ -1256,6 +1256,22 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 20
+    },
+    {
+      "id": "m1776175777295",
+      "sportId": "futsal",
+      "gameNumber": "70",
+      "category": "Mamadeira Masculino",
+      "group": "C",
+      "date": "2026-04-20",
+      "time": "08:25",
+      "place": "Quadra Poliesportiva do Distrito de Murupé",
+      "home": "vl",
+      "away": "at",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
     }
   ],
   "athletics": []
