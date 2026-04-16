@@ -1816,6 +1816,22 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 40
+    },
+    {
+      "id": "m1776347644353",
+      "sportId": "futsal",
+      "gameNumber": "105",
+      "category": "Mamadeira Feminino",
+      "group": "U",
+      "date": "2026-04-21",
+      "time": "08:00",
+      "place": "Quadra Poliesportiva de Angélicas",
+      "home": "cpg",
+      "away": "mb",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
     }
   ],
   "athletics": []
