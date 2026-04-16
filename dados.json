@@ -1784,6 +1784,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 24
+    },
+    {
+      "id": "m1776346275966",
+      "sportId": "futebol",
+      "gameNumber": "103",
+      "category": "Pedagógico Masculino",
+      "group": "U",
+      "date": "2026-04-21",
+      "time": "08:00",
+      "place": "Estádio Jacosão",
+      "home": "lm",
+      "away": "eural",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 40
+    },
+    {
+      "id": "m1776346386042",
+      "sportId": "futebol",
+      "gameNumber": "104",
+      "category": "Infantil Masculino",
+      "group": "U",
+      "date": "2026-04-21",
+      "time": "09:00",
+      "place": "Estádio Jacosão",
+      "home": "epg",
+      "away": "lm",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 40
     }
   ],
   "athletics": []
