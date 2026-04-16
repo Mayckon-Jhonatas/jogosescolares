@@ -1832,6 +1832,22 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 16
+    },
+    {
+      "id": "m1776347730586",
+      "sportId": "futsal",
+      "gameNumber": "106",
+      "category": "Mamadeira Masculino",
+      "group": "C",
+      "date": "2026-04-21",
+      "time": "08:20",
+      "place": "Quadra Poliesportiva de Angélicas",
+      "home": "at",
+      "away": "mb",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
     }
   ],
   "athletics": []
