@@ -1640,6 +1640,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 40
+    },
+    {
+      "id": "m1776343568813",
+      "sportId": "futsal",
+      "gameNumber": "94",
+      "category": "Mamadeira Masculino",
+      "group": "B",
+      "date": "2026-04-21",
+      "time": "08:00",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "as",
+      "away": "cl",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
+    },
+    {
+      "id": "m1776343731487",
+      "sportId": "futsal",
+      "gameNumber": "95",
+      "category": "Fraldinha Masculino",
+      "group": "C",
+      "date": "2026-04-21",
+      "time": "08:20",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "lc",
+      "away": "je",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
     }
   ],
   "athletics": []
