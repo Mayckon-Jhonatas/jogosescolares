@@ -1672,6 +1672,22 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 20
+    },
+    {
+      "id": "m1776345178270",
+      "sportId": "futsal",
+      "gameNumber": "96",
+      "category": "Chupetinha Feminino",
+      "group": "B",
+      "date": "2026-04-21",
+      "time": "08:45",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "lc",
+      "away": "ml",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
     }
   ],
   "athletics": []
