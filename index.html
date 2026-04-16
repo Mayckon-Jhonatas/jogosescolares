@@ -162,7 +162,7 @@
 
     .filters{
       display:grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(7, minmax(0, 1fr));
       gap:10px;
     }
 
@@ -578,7 +578,7 @@
         <div class="card-h">
           <div>
             <h2>📋 Tabela de Jogos</h2>
-            <div class="muted">Filtre por <b>categoria</b>, modalidade, chave ou escola.</div>
+            <div class="muted">Filtre por <b>categoria</b>, modalidade, chave, escola, data e status.</div>
           </div>
           <div class="muted" id="mutedHint"> ⚠️ Os dados podem levar até 30 segundos para serem atualizados conforme o andamento dos jogos. </div>
         </div>
@@ -602,6 +602,14 @@
             <div class="field">
               <label>Escola</label>
               <select id="fSchool"></select>
+            </div>
+            <div class="field">
+              <label>Data</label>
+              <select id="fDay"></select>
+            </div>
+            <div class="field">
+              <label>Status</label>
+              <select id="fStatus"></select>
             </div>
             <div class="field">
               <label>Buscar</label>
@@ -753,6 +761,20 @@
       return new Date(y, (m || 1)-1, d || 1, hh || 0, mm || 0, 0, 0);
     }
 
+    function todayISO(){
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, "0");
+      const d = String(now.getDate()).padStart(2, "0");
+      return `${y}-${m}-${d}`;
+    }
+
+    function normalizeGameNumber(value){
+      if (value === null || value === undefined || value === "" || value === "-") return 999999;
+      const n = parseInt(String(value).replace(/\D/g, ""), 10);
+      return Number.isFinite(n) ? n : 999999;
+    }
+
     function isLiveByTime(m){
       if (!m.date || !m.time) return false;
       const start = parseLocalDateTime(m.date, m.time);
@@ -773,6 +795,8 @@
       sportId: "ALL",
       phase: "ALL",
       school: "ALL",
+      day: "ALL",
+      status: "ALL",
       search: ""
     };
 
@@ -882,6 +906,16 @@
       fillCategorySelect();
       fillSelect($("fSchool"), SCHOOLS.map(s=>({value:s.id, label:s.name})), "Todas");
 
+      fillSelect($("fDay"), [
+        { value:"TODAY", label:"Apenas jogos do dia" }
+      ], "Todos os dias");
+
+      fillSelect($("fStatus"), [
+        { value:"HIDE_FINISHED", label:"Ocultar finalizados" },
+        { value:"FINISHED", label:"Somente finalizados" },
+        { value:"LIVE", label:"Somente ao vivo" }
+      ], "Todos");
+
       $("fCat").onchange = () => {
         state.cat = $("fCat").value;
         rebuildSportSelect(true);
@@ -905,6 +939,16 @@
         renderAll();
       };
 
+      $("fDay").onchange = () => {
+        state.day = $("fDay").value;
+        renderAll();
+      };
+
+      $("fStatus").onchange = () => {
+        state.status = $("fStatus").value;
+        renderAll();
+      };
+
       $("fSearch").oninput = () => {
         state.search = $("fSearch").value.trim().toLowerCase();
         renderAll();
@@ -915,18 +959,32 @@
       return MATCHES.filter(m=>{
         const s = sportObj(m.sportId);
         const categoria = getCategoria(m);
+        const liveNow = isLiveMatch(m);
+        const finished = m.status === "finished";
 
         if (state.cat !== "ALL" && (!s || s.category !== state.cat)) return false;
         if (state.sportId !== "ALL" && m.sportId !== state.sportId) return false;
         if (state.phase !== "ALL" && categoria !== state.phase) return false;
         if (state.school !== "ALL" && !(m.home === state.school || m.away === state.school)) return false;
+
+        if (state.day === "TODAY" && m.date !== todayISO()) return false;
+
+        if (state.status === "HIDE_FINISHED" && finished) return false;
+        if (state.status === "FINISHED" && !finished) return false;
+        if (state.status === "LIVE" && !liveNow) return false;
+
         if (state.search && !matchText(m).includes(state.search)) return false;
 
         return true;
       }).sort((a,b)=>{
+        const na = normalizeGameNumber(getGameNumber(a));
+        const nb = normalizeGameNumber(getGameNumber(b));
+
+        if (na !== nb) return na - nb;
+
         const da = (a.date || "") + "T" + (a.time || "00:00");
         const db = (b.date || "") + "T" + (b.time || "00:00");
-        return db.localeCompare(da);
+        return da.localeCompare(db);
       });
     }
 
