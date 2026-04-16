@@ -1688,6 +1688,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 16
+    },
+    {
+      "id": "m1776345333062",
+      "sportId": "futsal",
+      "gameNumber": "97",
+      "category": "Chupetinha Masculino",
+      "group": "B",
+      "date": "2026-04-21",
+      "time": "09:10",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "lc",
+      "away": "ml",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 16
+    },
+    {
+      "id": "m1776345485531",
+      "sportId": "futsal",
+      "gameNumber": "98",
+      "category": "Fraldinha Feminino",
+      "group": "U",
+      "date": "2026-04-21",
+      "time": "09:35",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "lc",
+      "away": "is",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
     }
   ],
   "athletics": []
