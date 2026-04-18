@@ -824,6 +824,38 @@
       "awayScore": 0,
       "status": "scheduled",
       "durationMin": 16
+    },
+    {
+      "id": "m1776513043234",
+      "sportId": "futsal",
+      "gameNumber": "43",
+      "category": "Fraldinha Feminino",
+      "group": "U",
+      "date": "2026-04-19",
+      "time": "10:30",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "is",
+      "away": "ml",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
+    },
+    {
+      "id": "m1776513143672",
+      "sportId": "futsal",
+      "gameNumber": "44",
+      "category": "Fraldinha Masculino",
+      "group": "A",
+      "date": "2026-04-19",
+      "time": "10:55",
+      "place": "Ginásio de Esporte Amaury Pedrosa",
+      "home": "jm",
+      "away": "ml",
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "scheduled",
+      "durationMin": 20
     }
   ],
   "athletics": []
