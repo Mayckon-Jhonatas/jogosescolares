@@ -775,6 +775,22 @@
       return Number.isFinite(n) ? n : 999999;
     }
 
+    function getMatchTimeStatus(m){
+      if (!m.date || !m.time) return "scheduled";
+
+      const start = parseLocalDateTime(m.date, m.time);
+      const dur = Number.isFinite(m.durationMin) ? m.durationMin : LIVE_DEFAULT_DURATION_MIN;
+      const end = new Date(start.getTime() + dur * 60 * 1000);
+      const now = new Date();
+
+      if (m.status === "finished") return "finished";
+      if (m.status === "live") return "live";
+      if (now >= start && now <= end) return "live";
+      if (now > end) return "waiting_data";
+
+      return "scheduled";
+    }
+
     function isLiveByTime(m){
       if (!m.date || !m.time) return false;
       const start = parseLocalDateTime(m.date, m.time);
@@ -785,9 +801,7 @@
     }
 
     function isLiveMatch(m){
-      if (m.status === "live") return true;
-      if (m.status === "finished") return false;
-      return isLiveByTime(m);
+      return getMatchTimeStatus(m) === "live";
     }
 
     const state = {
@@ -913,7 +927,8 @@
       fillSelect($("fStatus"), [
         { value:"HIDE_FINISHED", label:"Ocultar finalizados" },
         { value:"FINISHED", label:"Somente finalizados" },
-        { value:"LIVE", label:"Somente ao vivo" }
+        { value:"LIVE", label:"Somente ao vivo" },
+        { value:"WAITING_DATA", label:"Em espera pelos dados" }
       ], "Todos");
 
       $("fCat").onchange = () => {
@@ -959,8 +974,10 @@
       return MATCHES.filter(m=>{
         const s = sportObj(m.sportId);
         const categoria = getCategoria(m);
-        const liveNow = isLiveMatch(m);
-        const finished = m.status === "finished";
+        const timeStatus = getMatchTimeStatus(m);
+        const liveNow = timeStatus === "live";
+        const finished = timeStatus === "finished";
+        const waitingData = timeStatus === "waiting_data";
 
         if (state.cat !== "ALL" && (!s || s.category !== state.cat)) return false;
         if (state.sportId !== "ALL" && m.sportId !== state.sportId) return false;
@@ -972,6 +989,7 @@
         if (state.status === "HIDE_FINISHED" && finished) return false;
         if (state.status === "FINISHED" && !finished) return false;
         if (state.status === "LIVE" && !liveNow) return false;
+        if (state.status === "WAITING_DATA" && !waitingData) return false;
 
         if (state.search && !matchText(m).includes(state.search)) return false;
 
@@ -1014,8 +1032,10 @@
       }
 
       const rows = list.map(m=>{
-        const liveNow = isLiveMatch(m);
-        const isFinished = m.status === "finished" && Number.isFinite(m.homeScore) && Number.isFinite(m.awayScore);
+        const timeStatus = getMatchTimeStatus(m);
+        const liveNow = timeStatus === "live";
+        const isFinished = timeStatus === "finished" && Number.isFinite(m.homeScore) && Number.isFinite(m.awayScore);
+        const waitingData = timeStatus === "waiting_data";
 
         const score = (isFinished || liveNow) && Number.isFinite(m.homeScore) && Number.isFinite(m.awayScore)
           ? `${m.homeScore} × ${m.awayScore}`
@@ -1025,7 +1045,9 @@
           ? `<span class="pill">✅ Finalizado</span>`
           : liveNow
             ? `<span class="pill pill--live"><span class="dot-live"></span> Ao vivo — agora</span>`
-            : `<span class="pill">🕒 Agendado</span>`;
+            : waitingData
+              ? `<span class="pill">⏳ Em espera pelos dados</span>`
+              : `<span class="pill">🕒 Agendado</span>`;
 
         const sp = sportObj(m.sportId);
         const icon = sp?.icon || "🏅";
@@ -1158,12 +1180,14 @@
 
       $("matchesWrap").innerHTML = html;
 
-      const liveCount = matches.filter(m => isLiveMatch(m)).length;
+      const liveCount = matches.filter(m => getMatchTimeStatus(m) === "live").length;
+      const waitingCount = matches.filter(m => getMatchTimeStatus(m) === "waiting_data").length;
       const totalCount = matches.length + athletics.length;
 
       $("badgeCount").innerHTML = `
         ${totalCount} registros
         ${liveCount ? ` • <span class="pill pill--live2"><span class="dot-live"></span>${liveCount} ao vivo</span>` : ""}
+        ${waitingCount ? ` • ${waitingCount} em espera` : ""}
       `;
 
       const now = new Date();
