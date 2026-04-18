@@ -1196,5 +1196,26 @@
     window.addEventListener("storage", ()=>location.reload());
     init();
   </script>
+
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+  import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC53OPTdiPYnm2NeOVNOXYbK8jDfTT5epM",
+    authDomain: "tabela-de-jogos-1f257.firebaseapp.com",
+    projectId: "tabela-de-jogos-1f257",
+    storageBucket: "tabela-de-jogos-1f257.firebasestorage.app",
+    messagingSenderId: "462010538432",
+    appId: "1:462010538432:web:e63b10e0f8e0c5b7fc1025",
+    measurementId: "G-B1YRKK3P7L"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  // registra acesso
+  logEvent(analytics, "page_view");
+</script>
 </body>
 </html>
