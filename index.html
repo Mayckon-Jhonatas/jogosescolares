@@ -729,6 +729,71 @@
   }
 }
 
+@media (max-width: 768px){
+  .mobile-match-card .card-b{
+    padding:12px;
+  }
+
+  .mobile-labels-row{
+    gap:6px;
+    margin-bottom:12px;
+  }
+
+  .mobile-main-row{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:10px;
+    align-items:center;
+    margin-bottom:12px;
+  }
+
+  .mobile-team-name{
+    font-size:16px;
+    font-weight:800;
+    color:var(--text);
+    line-height:1.15;
+    word-break:break-word;
+  }
+
+  .mobile-team-left{
+    text-align:left;
+  }
+
+  .mobile-team-right{
+    text-align:right;
+  }
+
+  .mobile-score-center{
+    font-size:22px;
+    font-weight:800;
+    color:var(--text);
+    text-align:center;
+    white-space:nowrap;
+  }
+
+  .mobile-status-row{
+    margin-bottom:12px;
+  }
+
+  .mobile-date-row{
+    padding-top:10px;
+    border-top:1px solid rgba(15,23,42,.08);
+  }
+
+  .mobile-date-text{
+    font-size:14px;
+    font-weight:700;
+    color:var(--text);
+    margin-top:3px;
+  }
+
+  .mobile-place-text{
+    font-size:12px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -1235,37 +1300,29 @@
       const chave = getChave(m);
 
       return `
-        <div class="card" style="margin-bottom:12px">
+        <div class="card mobile-match-card" style="margin-bottom:12px">
           <div class="card-b">
-            <div class="pill-stack" style="margin-bottom:10px">
+            <div class="pill-stack mobile-labels-row">
               <span class="pill">Nº ${numero}</span>
               <span class="pill">${icon} ${sportName(m.sportId)}</span>
               <span class="pill">Categoria: ${categoria}</span>
               <span class="pill">Chave: ${chave}</span>
             </div>
 
-            <div style="display:grid; gap:8px;">
-              <div>
-                <div class="muted">Equipe 1</div>
-                <span class="school">${schoolName(m.home)}</span>
-              </div>
+            <div class="mobile-main-row">
+              <div class="mobile-team-name mobile-team-left">${schoolName(m.home)}</div>
+              <div class="mobile-score-center">${score}</div>
+              <div class="mobile-team-name mobile-team-right">${schoolName(m.away)}</div>
+            </div>
 
-              <div>
-                <div class="muted">Placar</div>
-                <div class="score">${score}</div>
-                <div style="margin-top:6px">${statusPill}</div>
-              </div>
+            <div class="mobile-status-row">
+              ${statusPill}
+            </div>
 
-              <div>
-                <div class="muted">Equipe 2</div>
-                <span class="school">${schoolName(m.away)}</span>
-              </div>
-
-              <div>
-                <div class="muted">Data e local</div>
-                <span class="school" style="font-size:14px">${fmtDate(m.date)} • ${m.time || "—"}</span>
-                <span class="sub">${m.place || "—"}</span>
-              </div>
+            <div class="mobile-date-row">
+              <div class="muted">Data e local</div>
+              <div class="mobile-date-text">${fmtDate(m.date)} • ${m.time || "—"}</div>
+              <div class="mobile-place-text">${m.place || "—"}</div>
             </div>
           </div>
         </div>
@@ -1346,6 +1403,7 @@
     </div>
   `;
 }
+    
     function renderAthleticsTable(list){
       if (!list.length){
         return `<div class="empty">Nenhum resultado encontrado com esses filtros.</div>`;
